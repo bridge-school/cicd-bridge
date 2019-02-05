@@ -1,0 +1,11 @@
+version: 2 # Use 2, or 2.1 for beta new features
+jobs: # Without workflows, we MUST have a job named build
+  build: # Define the environment
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/project
+    steps: # What are we doing in the job?
+      - checkout # Built-in command
+      - run: npm install
+      - run: npm test
+      - run: npm build
