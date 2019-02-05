@@ -4,7 +4,7 @@ jobs: # Without workflows, we MUST have a job named build
     docker:
       - image: circleci/node:10
     working_directory: ~/project
-  steps: # What are we doing in the job?
-    - checkout # Built-in command
-    - run: npm install
-    - run: npm test
+    steps: # What are we doing in the job?
+      - checkout # Built-in command
+      - run: npm install
+      - run: npm test
