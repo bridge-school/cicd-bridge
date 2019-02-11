@@ -1,0 +1,27 @@
+version: 2 # Use 2, or 2.1 for beta new features
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+  build:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm build
+
+workflows:
+  version: 2 # version is curently 2
+  main_workflow: # name of workflow
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
