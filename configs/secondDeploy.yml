@@ -28,8 +28,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run: sudo npm install -g --unsafe-perm now
-      - run: cd build
-      - run: now --token $NOW_TOKEN deploy .
+      - run: now --token $NOW_TOKEN deploy ~/project/build
 
 workflows:
   version: 2 # version is curently 2
