@@ -15,19 +15,21 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - persist_to_workspace:
-          - root: ~/project
-          - paths:
-              - build
+          root: ~/project
+          paths:
+            - build
   deploy:
     docker:
       - image: circleci/node:10
     working_directory: ~/project
     steps:
       - attach_workspace:
-        at: ~/project
-      - run: ls
+          at: ~/project
+      - run: sudo npm install -g --unsafe-perm now
+      - run: cd build
+      - run: now --token $NOW_TOKEN deploy .
 
 workflows:
   version: 2 # version is curently 2
@@ -37,3 +39,6 @@ workflows:
       - build:
           requires:
             - test
+      - deploy:
+          requires:
+            - build
