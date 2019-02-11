@@ -22,8 +22,22 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
-      - run: npm install
-      - run: npm build
+      - restore_cache:
+          keys:
+            - v1-{{ checksum "package-lock.json" }}
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - build
+  deploy:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/project
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: sudo npm install -g --unsafe-perm now
+      - run: now --token $NOW_TOKEN deploy ~/project/build
 
 workflows:
   version: 2 # version is curently 2
@@ -33,3 +47,6 @@ workflows:
       - build:
           requires:
             - test
+      - deploy:
+          requires:
+            - build
