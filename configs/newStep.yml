@@ -6,8 +6,6 @@ jobs: # Without workflows, we MUST have a job named build
     working_directory: ~/project
     steps: # What are we doing in the job?
       - checkout # Built-in command
-      - run:
-          - name: npm install
-          - command: npm install
+      - run: npm install
       - run: npm test
       - run: npm run build
