@@ -4,7 +4,7 @@
 
 - **FORK** this repo (not clone :p )
 - Clone your fork for local work!
-- Sign up for a CircleCI account. Connect using GitHub for easiest permissions.
+- Sign up for a CircleCI account. Connect using GitHub for easiest permissions. https://circleci.com/signup/
 - Download the circleci cli:
   - https://circleci.com/docs/2.0/local-cli/#installation
 - Open the config reference!
