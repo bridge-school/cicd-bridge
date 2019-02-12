@@ -2,7 +2,7 @@
 
 ## Setup
 
-- FORK this repo (not clone =) )
+- **FORK** this repo (not clone :p )
 - Clone your fork for local work!
 - Sign up for a CircleCI account. Connect using GitHub for easiest permissions.
 - Download the circleci cli:
